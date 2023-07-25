@@ -1,0 +1,161 @@
+<div class="container">
+    <div class="logo">
+        <img id="profile-img" src="assets\FINE.png" class="center" />
+    </div>
+    <!-- <h1>Register your account</h1> -->
+
+    <ul class="nav nav-tabs" id="regTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="patient-tab" data-bs-toggle="tab" data-bs-target="#patient" type="button" role="tab" aria-controls="patient" aria-selected="true">Patient</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="practitioner-tab" data-bs-toggle="tab" data-bs-target="#practitioner" type="button" role="tab" aria-controls="practitioner" aria-selected="false">Practitioner</button>
+        </li>
+    </ul>
+
+
+    <div class="tab-content" id="regTabContent">
+        <!-- patient tab -->
+        <div class="tab-pane fade show active" id="patient" role="tabpanel" aria-labelledby="patient-tab">
+            <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid " #f="ngForm" novalidate>
+                <!-- name -->
+                <div class="form-group mb-2">
+                    <input type="text" class="form-control" name="username" [(ngModel)]="paform.username" required minlength="3" maxlength="20" #username="ngModel" placeholder="Name" />
+                    <div class="alert-danger" *ngIf="username.errors && f.submitted">
+                        <div *ngIf="username.errors['required']">Username is required</div>
+                        <div *ngIf="username.errors['minlength']">
+                            Username must be at least 3 characters
+                        </div>
+                        <div *ngIf="username.errors['maxlength']">
+                            Username must be at most 20 characters
+                        </div>
+                    </div>
+                </div>
+                <!-- email address-->
+                <div class="form-group mb-2">
+                    <input type="email" class="form-control" name="email" [(ngModel)]="paform.email" required email #email="ngModel" placeholder="email@example.com" />
+                    <div class="alert-danger" *ngIf="email.errors && f.submitted">
+                        <div *ngIf="email.errors['required']">Email is required</div>
+                        <div *ngIf="email.errors['email']">
+                            Email must be a valid email address
+                        </div>
+                    </div>
+                </div>
+
+                <!-- phone number -->
+                <div class="form-group mb-2">
+                    <input type="text" class="form-control" name="phonenumber" [(ngModel)]="paform.phonenumber" required phonenumber placeholder="Phone(063)" />
+                </div>
+
+                <!-- password -->
+                <div class="form-group mb-2">
+                    <input type="password" class="form-control" name="password" [(ngModel)]="paform.password" requiredminlength="6" #password="ngModel" placeholder="Password" />
+                    <div class="alert-danger" *ngIf="password.errors && f.submitted">
+                        <div *ngIf="password.errors['required']">Password is required</div>
+                        <div *ngIf="password.errors['minlength']">
+                            Password must be at least 6 characters
+                        </div>
+                    </div>
+                </div>
+                <!-- next of kin -->
+
+                <!-- name -->
+                <div class="form-group mb-2">
+                    <div class="kin">
+                        <label for="phonenumber">Next Of Kin:</label>
+                    </div>
+                    <input type="text" class="form-control" name="name" placeholder=" Name" [(ngModel)]="paform.profession" required profession />
+                </div>
+                <!-- phone number -->
+                <div class="form-group mb-3">
+                    <input type="number" class="form-control" name="phone" placeholder="number" [(ngModel)]="paform.phone" required phonenumber />
+                </div>
+
+
+                <!-- register btn -->
+                <button type="button" class="btn btn-up w-100 mb-2 text-uppercase btn-lg" (click)="pa()">Register</button>
+
+                <!-- login link -->
+                <p>Already have an account? <a [routerLink]="['/login']"> Login</a> </p>
+
+
+                <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+                    Signup failed!<br />{{ errorMessage }}
+                </div>
+            </form>
+        </div>
+
+        <!-- practitioner tab -->
+        <div class="tab-pane fade" id="practitioner" role="tabpanel" aria-labelledby="practitioner-tab">
+
+            <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid " #f="ngForm" novalidate>
+                <!-- name -->
+                <div class="form-group mb-2">
+                    <input type="text" class="form-control" name="username" [(ngModel)]="pracform.username" required minlength="3" maxlength="20" #username="ngModel" placeholder="Name" />
+                    <div class="alert-danger" *ngIf="username.errors && f.submitted">
+                        <div *ngIf="username.errors['required']">Username is required</div>
+                        <div *ngIf="username.errors['minlength']">
+                            Username must be at least 3 characters
+                        </div>
+                        <div *ngIf="username.errors['maxlength']">
+                            Username must be at most 20 characters
+                        </div>
+                    </div>
+                </div>
+                <!-- email address-->
+                <div class="form-group mb-2">
+                    <input type="email" class="form-control" name="email" [(ngModel)]="pracform.email" required email #email="ngModel" placeholder="email@example.com" />
+                    <div class="alert-danger" *ngIf="email.errors && f.submitted">
+                        <div *ngIf="email.errors['required']">Email is required</div>
+                        <div *ngIf="email.errors['email']">
+                            Email must be a valid email address
+                        </div>
+                    </div>
+                </div>
+
+                <!-- phone number -->
+                <div class="form-group mb-2">
+                    <input type="text" class="form-control" name="phonenumber" [(ngModel)]="pracform.phonenumber" required phonenumber placeholder="Phone(063)" />
+                </div>
+
+                <!-- password -->
+                <div class="form-group mb-2">
+                    <input type="password" class="form-control" name="password" [(ngModel)]="pracform.password" requiredminlength="6" #password="ngModel" placeholder="Password" />
+                    <div class="alert-danger" *ngIf="password.errors && f.submitted">
+                        <div *ngIf="password.errors['required']">Password is required</div>
+                        <div *ngIf="password.errors['minlength']">
+                            Password must be at least 6 characters
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- proof of profession -->
+
+                <!-- profession name -->
+                <div class="form-group mb-2">
+                    <div class="kin">
+                        <label for="profession">Proof of profession:</label>
+                    </div>
+                    <input type="text" class="form-control" name="name" placeholder=" Name" [(ngModel)]="pracform.profession" required profession />
+                </div>
+
+                <!-- license number -->
+                <div class="form-group mb-2">
+                    <input type="number" class="form-control" name="license" [(ngModel)]="pracform.license" required license placeholder="License/No." />
+                </div>
+
+                <!-- register btn -->
+                <button type="button" class="btn btn-up w-100 mb-2 text-uppercase btn-lg" (click)="onSubmit()">Register</button>
+
+                <!-- login link -->
+                <p>Already have an account? <a [routerLink]="['/login']"> Login</a> </p>
+
+                <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+                    Signup failed!<br />{{ errorMessage }}
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

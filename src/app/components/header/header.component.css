@@ -1,0 +1,31 @@
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #256789;
+    color: white !important;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.svg-inline--fa {
+    height: 2rem;
+    color: white !important;
+}
+
+.float {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    bottom: 40px;
+    right: 178px;
+    background-color: #256789;
+    color: #FFF;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.my-float {
+    margin-top: 10px;
+}

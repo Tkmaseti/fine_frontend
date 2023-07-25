@@ -1,0 +1,27 @@
+.center {
+    display: block;
+    margin-top: 5rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.btns {
+    margin: 10rem 3rem;
+}
+
+.btn-in {
+    background: #FCBA21;
+    height: 50px;
+    font-weight: bold;
+    font-size: larger;
+    color: white;
+}
+
+.btn-up {
+    background: #12457d;
+    height: 50px;
+    font-weight: bold;
+    font-size: larger;
+    color: white;
+}
