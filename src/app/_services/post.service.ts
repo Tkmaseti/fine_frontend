@@ -17,7 +17,7 @@ export class PostService {
   Post: Post[] = []
 
 
-  postUrl = 'http://localhost:8050/api/post/'
+  postUrl = 'https://fine-backend-bfrt.onrender.com/api/post/'
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -34,7 +34,7 @@ export class PostService {
   ) {}
 
   getPosts(){
-    this.http.get<any>('http://localhost:8050/api/post/').subscribe(
+    this.http.get<any>('https://fine-backend-bfrt.onrender.com/api/post/').subscribe(
       response => {
         this.Post = response;
       }
