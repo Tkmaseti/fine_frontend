@@ -7,14 +7,14 @@ import { MessageService } from './message.service';
 import { User } from '../_interface/users';
 
 
-const API_URL = 'http://localhost:8081/api/test/';
+const API_URL = 'https://fine-backend-bfrt.onrender.com/api/test/';
 const AUTH_TOKEN = window.sessionStorage.getItem('auth-token')
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private user_url = 'http://localhost:8050/api/practitioner';
+  private user_url = 'https://fine-backend-bfrt.onrender.com/api/practitioner';
   users: User[] = []
 
   httpOptions = {
